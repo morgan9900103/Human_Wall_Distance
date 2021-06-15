@@ -4,7 +4,11 @@ import cv2
 
 
 def process_image(img, human_dist=2):
-    # Filter out the data points which are not in the same distance of human (around 2m)
+    """
+    This function will filter out the data points which are not in the same distance of human (assume 2m)
+
+    return: img
+    """
     height, width = np.shape(img)
     for i in range(height):
         for j in range(width):
@@ -25,6 +29,9 @@ def process_image(img, human_dist=2):
 
 
 def find_clearance(img, human_dist=2, corridor=1.5):
+    """
+    This function will find the clearance of human/shelf or human/wall. We will assume the corridor is 1.5m wide
+    """
     # Canny edge detection
     avg = np.mean(img)
     threshold1 = 0.8 * avg
